@@ -43,52 +43,28 @@ bool isLeapYear(int year) { //O(1)
         return true;
     }
 
-
     return false;
 }
 
-int getDaysinMonths(int month, int year) { //O(1)
+int getDaysinMonth(int month, int year) { //O(1)
     switch (month) {
         case 1: //janvier
-            return 31;
-            break;
-        case 2: //février
-            return isLeapYear(year) ? 29 : 28;
-            break;
         case 3: //mars
-            return 31;
-            break;
-        case 4: //avril
-            return 30;
-            break;
         case 5: //mai
-            return 31;
-            break;
-        case 6: //juin
-            return 30;
-            break;
         case 7: //juillet
-            return 31;
-            break;
         case 8: //aout
-            return 31;
-            break;
-        case 9: //septembre
-            return 30;
-            break;
         case 10: //octobre
-            return 31;
-            break;
-        case 11: //novembre
-            return 30;
-            break;
         case 12: //decembre
             return 31;
-            break;
-        default:
-            std::cout << "Erreur lors de la recuperation du nombre de jour dans le mois" << month << std::endl;
-            return 0; //err recognition
-            break;
+
+        case 4: //avril
+        case 6: //juin
+        case 9: //septembre
+        case 11: //novembre
+            return 30;
+
+        case 2: //février
+            return isLeapYear(year) ? 29 : 28;
     }
 }
 
@@ -99,7 +75,6 @@ void printDays(const int firstDay, const int lastDay) {
     for (int i=0; i<pos;++i) {
         std::cout << "   ";
     }
-    //std::cout << std::string(pos*3, ' ');
 
     for (int i = 1; i <= lastDay; i++) {
         std::cout << std::setw(3) << i;
@@ -122,7 +97,7 @@ int main() {
             std::cout << "  L  M  M  J  V  S  D" << std::endl;
 
             const int firstDay = zellerCongruence(1, static_cast<int>(i), year);
-            const int dayInMonth = getDaysinMonths(static_cast<int>(i), year);
+            const int dayInMonth = getDaysinMonth(static_cast<int>(i), year);
             printDays(firstDay,dayInMonth);
 
             std::cout << std::endl;
