@@ -6,7 +6,6 @@
 #define CODE_UTILS_H
 
 int zellerCongruence(int q, int m, int year);
-bool isLeapYear(int year);
 int getDaysinMonth(int month, int year);
 
 #endif //CODE_UTILS_H
